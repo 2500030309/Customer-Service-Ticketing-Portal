@@ -1,0 +1,49 @@
+Ticket Comments Service Requirements
+====================================
+
+Runtime:
+- Node.js 20 or newer
+- npm
+- MongoDB running locally or a MongoDB connection string
+
+Important:
+- npm start will fail if MongoDB is not reachable at DBURL.
+- Current local error if MongoDB is stopped:
+  connect ECONNREFUSED 127.0.0.1:27017
+
+Node dependencies:
+- express: HTTP API server
+- mongoose: MongoDB ODM
+- dotenv: loads PORT and DBURL from .env
+- cors: allows requests from the React/FastAPI apps
+- nodemon: auto-restarts the service during development
+
+Environment variables in .env:
+- PORT=9000
+- DBURL=mongodb://localhost:27017/supportticketmongo
+
+For MongoDB Atlas, replace DBURL with:
+mongodb+srv://<username>:<password>@<cluster-url>/supportticketmongo
+
+Install:
+npm install
+
+Run development server:
+npm.cmd run dev
+
+Run production server:
+npm.cmd start
+
+API routes:
+- GET /
+- GET /health
+- POST /comments/add
+- GET /comments/:ticketNumber
+
+Expected comment payload:
+{
+  "ticketNumber": 1001,
+  "comment": "Customer shared more details.",
+  "commentBy": "agent username",
+  "status": "PENDING"
+}

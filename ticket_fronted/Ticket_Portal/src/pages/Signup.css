@@ -1,0 +1,11 @@
+@import './Login.css';
+
+.signup-box {
+    width: min(470px, 100%);
+}
+
+.signup-login-link {
+    margin: 16px 0 0;
+    text-align: center;
+    font-size: 14px;
+}

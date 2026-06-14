@@ -1,0 +1,202 @@
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    color: white;
+    position: fixed;
+    inset: 0 auto 0 0;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 20;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, rgba(16, 24, 40, 0.98) 0%, rgba(27, 38, 59, 0.98) 54%, rgba(12, 64, 72, 0.96) 100%);
+    box-shadow: 18px 0 45px rgba(16, 24, 40, 0.2);
+}
+
+.sidebar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.sidebar > * {
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 8px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.sidebar-brand img {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: white;
+    padding: 5px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.sidebar h2 {
+    margin: 0;
+    color: white;
+    font-size: 19px;
+    font-weight: 900;
+}
+
+.sidebar-brand span,
+.sidebar-user span {
+    display: block;
+    margin-top: 3px;
+    color: #c7d7fe;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.sidebar-nav {
+    display: grid;
+    gap: 7px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 46px;
+    color: #e4e7ec;
+    text-decoration: none;
+    padding: 12px 13px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 760;
+    border: 1px solid transparent;
+    position: relative;
+    transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.13);
+    transform: translateX(4px);
+}
+
+.sidebar a.active::after {
+    content: "";
+    width: 4px;
+    border-radius: 999px;
+    background: #2dd4bf;
+    position: absolute;
+    inset: 9px auto 9px 0;
+}
+
+.sidebar img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.sidebar a img,
+.logout-button img {
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.18));
+}
+
+.sidebar-user {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+}
+
+.sidebar-user strong {
+    display: block;
+    max-width: 155px;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #ffffff, #99f6e4);
+    color: #134e4a;
+    font-weight: 900;
+}
+
+.logout-button {
+    width: 100%;
+    min-height: 44px;
+    border: 0;
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    background: #ffffff;
+    color: #101828;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.logout-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+}
+
+.logout-button img {
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 780px) {
+    .sidebar {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: auto;
+        padding: 14px;
+        border-radius: 0;
+    }
+
+    .sidebar-brand {
+        padding-bottom: 12px;
+    }
+
+    .sidebar-nav {
+        grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
+    }
+
+    .sidebar a {
+        min-height: 42px;
+    }
+
+    .sidebar-user,
+    .logout-button {
+        display: none;
+    }
+}
