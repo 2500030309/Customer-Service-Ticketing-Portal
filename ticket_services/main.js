@@ -11,7 +11,7 @@ from "./controllers/commentControllers.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 8002;
 
 app.use(cors());
 
