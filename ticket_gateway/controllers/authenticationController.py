@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
+import os
 import httpx
 from httpx import RequestError
 
@@ -7,7 +8,7 @@ from models.schemas import SigninSchema, SignupSchema
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
-SPRING_URL = "http://localhost:8002"
+SPRING_URL = os.getenv("SPRING_URL", "http://localhost:8002")
 
 
 def _json_or_text(response: httpx.Response):

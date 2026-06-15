@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+import os
 import httpx
 from httpx import RequestError
 
@@ -6,7 +7,7 @@ from models.schemas import TicketSchema
 
 router = APIRouter(prefix="/tickets", tags=["Tickets"])
 
-SPRING_URL = "http://localhost:8002"
+SPRING_URL = os.getenv("SPRING_URL", "http://localhost:8002")
 
 
 def _json_or_text(response: httpx.Response):

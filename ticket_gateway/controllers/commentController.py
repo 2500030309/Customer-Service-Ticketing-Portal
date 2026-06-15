@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
+import os
 import httpx
 from httpx import RequestError
 
@@ -7,7 +8,7 @@ from models.schemas import CommentSchema
 
 router = APIRouter(prefix="/comments", tags=["Comments"])
 
-NODE_COMMENTS_URL = "http://localhost:9000"
+NODE_COMMENTS_URL = os.getenv("NODE_URL", os.getenv("NODE_COMMENTS_URL", "http://localhost:9000"))
 
 
 def _json_or_text(response: httpx.Response):
