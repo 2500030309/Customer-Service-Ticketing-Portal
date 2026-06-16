@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import Sidebar from '../components/Sidebar'
 import API from '../services/api'
-import axios from 'axios'
 import './TicketManager.css'
 
 function TicketManager() {
@@ -94,8 +93,8 @@ function TicketManager() {
         if (!confirmDelete) return;
 
         try {
-            await axios.delete(
-                `http://localhost:8001/tickets/delete/${ticketNumber}`
+            await API.delete(
+                `/tickets/delete/${ticketNumber}`
             );
 
             alert("Ticket Deleted Successfully");

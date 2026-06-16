@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react'
-import axios from 'axios'
 
 import Sidebar from '../components/Sidebar'
 import API from '../services/api'
@@ -65,8 +64,8 @@ function TicketList() {
         status
     ) => {
 
-        await axios.put(
-            `http://localhost:8001/tickets/status/${ticketNumber}`,
+        await API.put(
+            `/tickets/status/${ticketNumber}`,
             null,
             {
                 params: { status },
@@ -87,8 +86,8 @@ function TicketList() {
         if (!confirmDelete) return;
 
         try {
-            await axios.delete(
-                `http://localhost:8001/tickets/delete/${ticketNumber}`
+            await API.delete(
+                `/tickets/delete/${ticketNumber}`
             );
 
             alert("Ticket Deleted Successfully");
